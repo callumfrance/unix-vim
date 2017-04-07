@@ -1,3 +1,4 @@
+" {
 set nocompatible          " required
 filetype off              " required before vundle
 
@@ -58,12 +59,19 @@ set smartcase
 colorscheme solarized
 set background=dark
 winpos 720 0
+
+"adds extra key mappings for save, quit, and colon
+nnoremap ; :
+command WQ wq
+command Wq wq
+command Q q
+command W w
 " }
 
 " folds {
 set foldmethod=marker
 set foldmarker={,}
-set foldlevel=0
+set foldlevel=1
 " }
 
 "Youcompleteme fix
@@ -88,12 +96,24 @@ function! WP()
   Goyo 85%x85%-2%
 endfunction
 
-augroup word_processors
-  autocmd!
-  autocmd BufNewFile,BufRead *.md,*.markdown call WP()
-  autocmd BufNewFile,BufRead *.txt call WP()
-  autocmd BufNewFile,BufRead *.textile,*.rst call WP()
-augroup end
+function LazyWP()
+  colorscheme materialtheme
+  setlocal lines=42 columns=85
+  setlocal expandtab
+  setlocal formatoptions=1
+  map j gj
+  map k gk
+  setlocal formatprg=par
+  setlocal wrap
+  setlocal linebreak
+endfunction
+
+"augroup word_processors
+"  autocmd!
+"  autocmd BufNewFile,BufRead *.md,*.markdown call WP()
+"  autocmd BufNewFile,BufRead *.txt call WP()
+"  autocmd BufNewFile,BufRead *.textile,*.rst call WP()
+"augroup end
 
 " }
 
@@ -103,4 +123,5 @@ augroup java_standards
   autocmd Filetype java set tabstop=4
   autocmd Filetype java set shiftwidth=4
 augroup END
+" }
 " }
