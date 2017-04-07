@@ -1,10 +1,11 @@
-" MacVim GUI mode
+" MacVim GUI mode {
 if has("gui_macvim")
   " defaults{
   set guifont=Monaco:h13
+  " set guifont=Menlo\ Regular:h13
   set guioptions=aAce
   set fuoptions=maxvert,maxhorz
-  set noballooneval
+  set noballooneval "some random debugging mouse position thing
   winpos 700 0
  " }
  
@@ -12,3 +13,4 @@ if has("gui_macvim")
   autocmd VimResized * wincmd = 
  
  endif
+ " }
