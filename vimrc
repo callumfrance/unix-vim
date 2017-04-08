@@ -172,7 +172,7 @@ augroup END
 " folds {
 set foldmethod=marker
 set foldmarker={,}
-set foldlevel=1
+set foldlevel=2
 set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 " }
 " }
