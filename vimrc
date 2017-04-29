@@ -29,7 +29,7 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'junegunn/limelight.vim'
 
 call vundle#end()
-" }
+" } end plugins
 
 filetype plugin indent on " required after vundle
 cabbrev Goyo Goyo 85%x85%-2%
@@ -42,6 +42,7 @@ let mapleader=","
 set antialias
 set tw=0              " textwidth doesn't wrap
 set relativenumber    " page numbering
+set number
 set nowrap            " lines continue across RHS window
 set tabstop=4
 set shiftwidth=4
@@ -80,24 +81,26 @@ command WQ wq
 command Wq wq
 command Q q
 command W w
-" }
+" } end default styling
 
 "Youcompleteme fix {
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" }
+" } end YCM
 
 " file types {
 augroup word_processors
   autocmd!
   autocmd BufNewFile,BufRead *.html call HTMLSettings()
 augroup END
-" }
+" } end file types
 
 " word processor {
 
 " `:call WP()`		opens the word processor mode
 " `z=`				displays corrections
 " `zg`				adds words to dictionary
+
+" the `true` word processor is the best way to strip away menus, toolbars, and styling. Just let the words flow.
 function! WP()
   setlocal noexpandtab        "When the tab key is pressed, inserts a tab and not several spaces
   setlocal formatoptions=1
@@ -119,6 +122,7 @@ function! WP()
   setlocal lines=42 columns=85
 endfunction
 
+" The lazy word processor is the preferred choice for casual editing, or text files with a lot of code examples
 function! LazyWP()
   setlocal noexpandtab
   setlocal formatoptions=1
@@ -128,12 +132,12 @@ function! LazyWP()
   setlocal wrap
   setlocal linebreak    " line wraps don't break up words
 
-  UniCycleOn
+  UniCycleOff 		" Unicycle can mess up some coding, so it is disabled for the lazy mode
 
   colorscheme materialtheme
   setlocal lines=42 columns=85
 endfunction
-" }
+" } end word processors
 
 " html settings {
 let g:user_emmet_install_global = 0
@@ -149,7 +153,7 @@ function! HTMLSettings()
 	bufdo syn match htmlError "[<>&]"
 endfunction
 
-" }
+" } end html settings
 
 " unicycle {
 " best to use only for certain filetypes
@@ -159,20 +163,21 @@ endfunction
 "  double and single quotes are automatically done
 " :UniCycleOn
 " http://www.vim.org/scripts/script.php?script_id=1384
-" }
+" } end unicycle
 
 " java coding standards - move this to an ftplugin {
+" these are simply all the standards that my institution uses for Java - at least, the ones I can fix with a setting
 augroup java_standards
   autocmd!
   autocmd Filetype java set tabstop=4
   autocmd Filetype java set shiftwidth=4
 augroup END
-" }
+" } end java coding standards
 
 " folds {
 set foldmethod=marker
 set foldmarker={,}
 set foldlevel=2
 set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
-" }
-" }
+" } end folds
+" } end vimrc
