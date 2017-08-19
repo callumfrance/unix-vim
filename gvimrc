@@ -5,8 +5,11 @@ if has("gui_macvim")
   " set guifont=Menlo\ Regular:h13
   set guioptions=aAce
   set fuoptions=maxvert,maxhorz
+		"good fullscreen options
   set noballooneval "some random debugging mouse position thing
-  winpos 700 0
+  winpos 740 0
+
+  set guicursor+=n-v-c:blinkon0		"cursor doesn't blink
  " }
  
  " automaticall resizes splits when resizing window
@@ -14,3 +17,5 @@ if has("gui_macvim")
  
  endif
  " }
+
+
