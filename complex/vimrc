@@ -23,6 +23,8 @@ Plugin 'Ron89/thesaurus_query.vim'
 " Plugin 'reedes/vim-textobj-quote'
 Plugin 'vim-scripts/ScrollColors'
 
+Plugin 'lervag/vimtex'		"LaTeX settings for vim
+
 " Plugin 'valloric/youcompleteme'
 
 Plugin 'junegunn/goyo.vim'
@@ -35,6 +37,8 @@ Plugin 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<F2>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsUsePythonVersion = 2 "vim on this computer uses python v2 not python3
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
@@ -82,7 +86,7 @@ let mapleader=","
 " default styling {
 " set cursorline
 set antialias
-set relativenumber    " page numbering
+" set relativenumber    " page numbering
 set number
 set nowrap            " lines continue across RHS window
 set tabstop=4
@@ -157,7 +161,7 @@ function! WP()
   setlocal noexpandtab        "When the tab key is pressed, inserts a tab and not several spaces
   map j gj
   map k gk
-  setlocal formatoptions=an1
+  setlocal formatoptions=tn1
 		"a = automatic formatting of paragraphs
 		"n = recognize numbered lists
 		"1 = don't break line after a one-letter word
@@ -169,14 +173,14 @@ function! WP()
 
   set guifont=Monaco:h12
 
-  set wrap linebreak nolist
+  set nowrap linebreak nolist
 
   " UniCycleOn
   Goyo 99%x99%
 
   colorscheme Benokai
-  setlocal lines=42 columns=80
-  setlocal tw=80
+  setlocal lines=42 columns=83
+  setlocal tw=75
 endfunction
 
 function! LazyWP()
@@ -237,4 +241,3 @@ set foldlevel=1
 set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 " }
 " }
-
