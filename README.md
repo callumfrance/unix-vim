@@ -1,3 +1,7 @@
+# note
+this repository is now obsolete and has been replaced by https://github.com/callumfrance/vim-settings
+
+
 # unix-vim
 newer vim settings which should flow over into ms-vim
 
